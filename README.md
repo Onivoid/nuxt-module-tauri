@@ -184,3 +184,5 @@ pnpm run release
 [npm-downloads-href]: https://npmjs.com/package/nuxt-module-tauri
 [license-src]: https://img.shields.io/npm/l/nuxt-module-tauri.svg?style=flat&colorA=020420&colorB=00DC82
 [license-href]: https://npmjs.com/package/nuxt-module-tauri
+[nuxt-src]: https://img.shields.io/npm/v/nuxt/latest.svg?style=flat&colorA=020420&colorB=00DC82
+[nuxt-href]: https://nuxt.com
