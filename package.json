@@ -1,6 +1,6 @@
 {
     "name": "nuxt-module-tauri",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "description": "Nuxt module for Tauri applications",
     "repository": "onivoid/nuxt-module-tauri",
     "author": "Onivoid",
