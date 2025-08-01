@@ -3,33 +3,30 @@ import {
   addPlugin,
   createResolver,
   addImports,
-} from "@nuxt/kit";
+} from '@nuxt/kit'
 
-// Module options TypeScript interface definition
-export interface ModuleOptions {}
-
-export default defineNuxtModule<ModuleOptions>({
+export default defineNuxtModule<object>({
   meta: {
-    name: "nuxt-tauri",
-    configKey: "nuxtTauri",
+    name: 'nuxt-tauri',
+    configKey: 'nuxtTauri',
   },
   // Default configuration options of the Nuxt module
   defaults: {},
   setup(_options, _nuxt) {
-    const resolver = createResolver(import.meta.url);
+    const resolver = createResolver(import.meta.url)
 
-    addPlugin(resolver.resolve("./runtime/plugin"));
+    addPlugin(resolver.resolve('./runtime/plugin'))
 
     // Auto-import du composable
     addImports([
       {
-        name: "useTauriInvoke",
-        from: resolver.resolve("./runtime/composables/useTauriInvoke"),
+        name: 'useTauriInvoke',
+        from: resolver.resolve('./runtime/composables/useTauriInvoke'),
       },
       {
-        name: "useTauriEvent",
-        from: resolver.resolve("./runtime/composables/useTauriEvent"),
+        name: 'useTauriEvent',
+        from: resolver.resolve('./runtime/composables/useTauriEvent'),
       },
-    ]);
+    ])
   },
-});
+})
