@@ -8,8 +8,9 @@
 Vue composables for Tauri API in Nuxt applications.
 
 -   [✨ &nbsp;Release Notes](/CHANGELOG.md)
+-   [📖 &nbsp;Documentation](https://nuxt-tauri.onivoid.fr)
+-   [🇫🇷 &nbsp;Documentation Française](https://nuxt-tauri.onivoid.fr/fr/)
     <!-- - [🏀 Online playground](https://stackblitz.com/github/your-org/nuxt-tauri?file=playground%2Fapp.vue) -->
-    <!-- - [📖 &nbsp;Documentation](https://example.com) -->
 
 ## Features
 
@@ -35,42 +36,44 @@ pnpm add @tauri-apps/api
 
 That's it! You can now use Tauri composables in your Nuxt app ✨
 
-## Usage
+## 📖 Full Documentation
+
+For complete guides, API reference, and advanced examples, visit our documentation:
+
+**🌐 [English Documentation](https://nuxt-tauri.onivoid.fr)**  
+**🇫🇷 [Documentation Française](https://nuxt-tauri.onivoid.fr/fr/)**
+
+The documentation includes:
+
+-   📚 Complete API reference
+-   🎯 Step-by-step guides
+-   💡 Advanced usage patterns
+-   🔧 Configuration options
+-   ⚠️ Error handling examples
+
+## Quick Usage
 
 ### useTauriInvoke
 
 Execute Tauri commands with reactive state management:
 
 ```vue
-<template>
-    <div>
-        <button @click="execute" :disabled="pending">
-            {{ pending ? "Loading..." : "Get User" }}
-        </button>
-
-        <div v-if="error" class="error">Error: {{ error.message }}</div>
-
-        <div v-if="data">
-            <h3>User: {{ data.name }}</h3>
-            <p>Email: {{ data.email }}</p>
-        </div>
-    </div>
-</template>
-
 <script setup>
 // Basic usage
-const { data, pending, error, execute } = useTauriInvoke('get_user', { id: 123 })
+const { data, pending, error, execute } = useTauriInvoke("get_user", {
+    id: 123,
+});
 
 // With TypeScript
-interface User {
-  name: string
-  email: string
-}
-
-const { data, pending, error, execute } = useTauriInvoke<User>('get_user', { id: 123 })
+const { data, pending, error, execute } =
+    useTauriInvoke < User > ("get_user", { id: 123 });
 
 // Immediate execution
-const { data, pending, error } = useTauriInvoke('get_config', {}, { immediate: true })
+const { data, pending, error } = useTauriInvoke(
+    "get_config",
+    {},
+    { immediate: true }
+);
 </script>
 ```
 
@@ -79,33 +82,18 @@ const { data, pending, error } = useTauriInvoke('get_config', {}, { immediate: t
 Listen to and emit Tauri events:
 
 ```vue
-<template>
-    <div>
-        <button @click="startListening">Start Listening</button>
-        <button @click="stopListening">Stop Listening</button>
-        <button @click="emit({ message: 'Hello from frontend!' })">
-            Send Event
-        </button>
-
-        <div v-if="error" class="error">Error: {{ error.message }}</div>
-
-        <div v-if="data">Last event: {{ data }}</div>
-    </div>
-</template>
-
 <script setup>
 // Basic usage
-const { data, error, startListening, stopListening, emit } = useTauriEvent('my-event')
+const { data, error, startListening, stopListening, emit } =
+    useTauriEvent("my-event");
 
 // With TypeScript
-interface EventPayload {
-  message: string
-  timestamp: number
-}
-
-const { data, error, startListening, stopListening, emit } = useTauriEvent<EventPayload>('my-event')
+const { data, error, startListening, stopListening, emit } =
+    useTauriEvent < EventPayload > "my-event";
 </script>
 ```
+
+📖 **[See complete examples and API reference →](https://nuxt-tauri.onivoid.fr)**
 
 ## API Reference
 
@@ -113,36 +101,15 @@ const { data, error, startListening, stopListening, emit } = useTauriEvent<Event
 
 Execute a Tauri command with reactive state.
 
-**Parameters:**
-
--   `command` (string): The Tauri command name
--   `args` (object, optional): Arguments to pass to the command
--   `options` (object, optional): Execution options
-    -   `immediate` (boolean): Execute immediately on composable creation
-
-**Returns:**
-
--   `data`: Reactive ref containing the command result
--   `pending`: Reactive ref indicating loading state
--   `error`: Reactive ref containing any error
--   `execute()`: Function to execute the command
--   `refresh()`: Alias for execute
+**Returns:** `{ data, pending, error, execute, refresh }`
 
 ### useTauriEvent(eventName)
 
 Listen to and emit Tauri events.
 
-**Parameters:**
+**Returns:** `{ data, error, startListening, stopListening, emit }`
 
--   `eventName` (string): The event name to listen for
-
-**Returns:**
-
--   `data`: Reactive ref containing the last received event payload
--   `error`: Reactive ref containing any error
--   `startListening()`: Start listening for events
--   `stopListening()`: Stop listening for events
--   `emit(payload)`: Emit an event with the given payload
+📖 **[Complete API documentation with examples →](https://nuxt-tauri.onivoid.fr/api/)**
 
 ## Requirements
 
